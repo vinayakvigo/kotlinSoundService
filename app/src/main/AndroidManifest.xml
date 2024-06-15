@@ -24,6 +24,7 @@
             android:foregroundServiceType="mediaPlayback"
             android:exported="true" />
 
+
         <activity
             android:name=".activity.MainActivity"
             android:exported="true">

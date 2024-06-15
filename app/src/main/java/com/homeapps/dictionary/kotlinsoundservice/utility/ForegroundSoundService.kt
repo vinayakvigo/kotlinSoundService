@@ -162,7 +162,7 @@ class ForegroundSoundService : Service() {
                     forcePlayThroughSpeaker()
                     mediaPlayer?.start()
                 }
-                handler.postDelayed(this, RingingTime.toLong()) // 1 hour = 3600000 ms
+                handler.postDelayed(this, RingingTime.toLong() *60) // 1 hour = 3600000 ms
             }
         }
     }

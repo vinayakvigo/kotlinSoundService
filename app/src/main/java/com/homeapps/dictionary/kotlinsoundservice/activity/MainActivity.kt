@@ -4,12 +4,14 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.homeapps.dictionary.kotlinsoundservice.R
 import com.homeapps.dictionary.kotlinsoundservice.utility.ForegroundSoundService
+import com.homeapps.dictionary.kotlinsoundservice.utility.GetPhoneNumber
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,6 +27,8 @@ class MainActivity : AppCompatActivity() {
         val buttonStart: Button = findViewById(R.id.button_start)
         val buttonStop: Button = findViewById(R.id.button_stop)
         val btnPauseSound: Button = findViewById(R.id.btn_pause_sound)
+
+        val tw: TextView = findViewById(R.id.tw)
 
         buttonStart.setOnClickListener {
             val serviceIntent = Intent(this@MainActivity, ForegroundSoundService::class.java)
@@ -43,6 +47,13 @@ class MainActivity : AppCompatActivity() {
             val pauseIntent = Intent(this@MainActivity, ForegroundSoundService::class.java)
             pauseIntent.action = "PAUSE_SOUND"
             startService(pauseIntent)
+        }
+
+
+        tw.setOnClickListener {
+
+            var obj = GetPhoneNumber(this);
+            tw.setText((("num" + obj.getPhoneNumber()).toString() + " code :" + obj.getCountryCode()).toString() + "\nlist" + obj.getPhoneNumbers())
         }
 
     }
